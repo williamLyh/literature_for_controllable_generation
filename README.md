@@ -25,8 +25,28 @@ Our preferences on topic or sentiment can be baked into the candidate ranking fu
 
 * [Discriminative Adversarial Search for Abstractive Summarization](https://arxiv.org/pdf/2002.10375.pdf) [pmlr 2020] Discriminative Adversarial Search is inspired by GAN and trains the discriminator to tell apart human created text from machine generated text. The discriminator predicts a label for each token instead of for the entire sequence. The discriminator logprob is added to the score to guide sampling towards the human-written style.
 
-* [If Beam Search is the Answer, What was the Question?](https://arxiv.org/pdf/2010.02650.pdf) [2021] studied beam search in a regularized decoding framework. The MAP part demands for sequences with maximum probability given context, while the regularizer introduces other constraints. It is possible a global optimal strategy may need to have a high-surprisal step occasionally so that it can shorten the output length or produce more low-surprisal steps afterwards.   
+* [If Beam Search is the Answer, What was the Question?](https://arxiv.org/pdf/2010.02650.pdf) [emnlp 2020] studied beam search in a regularized decoding framework. The MAP part demands for sequences with maximum probability given context, while the regularizer introduces other constraints. It is possible a global optimal strategy may need to have a high-surprisal step occasionally so that it can shorten the output length or produce more low-surprisal steps afterwards.   
 Beam search has gone through the test of time in the field of NLP. The question is: If we want to model beam search as exact search in a regularized decoding framework. The paper proposed a connection between beam search and the uniform information density (UID) hypothesis. “The uniform information density hypothesis (UID; Levy and Jaeger, 2007) states that—subject to the constraints of the grammar—humans prefer sentences that distribute information (in the sense of information theory) equally across the linguistic signal, e.g., a sentence.”   
 It hypothesizes that humans prefer text with evenly distributed surprisal. Popular decoding methods like top-k sampling or nuclear sampling actually filter out high-surprisal options, thus implicitly encouraging the UID property in output sequences. Beam search has gone through the test of time in the field of NLP. The question is: If we want to model beam search as exact search in a regularized decoding framework. The paper proposed a connection between beam search and the uniform information density (UID) hypothesis. 
+
+
+## Trainable Decoding
+* [Trainable Greedy Decoding for Neural Machine Translation](https://arxiv.org/pdf/1702.02429.pdf) [emnlp 2017] proposed a trainable greedy decoding algorithm to maximize an arbitrary objective for sampling sequences. The idea is based on the noisy, parallel approximate decoding (NPAD). NPAD injects unstructured noise into the model hidden states and runs noisy decoding multiple times in parallel to avoid potential degradation. To take a step further, trainable greedy decoding replaces the unstructured noise with a learnable random variable, predicted by a RL agent that takes the previous hidden state, the previous decoded token and the context as input. In other words, the decoding algorithm learns a RL actor to manipulate the model hidden states for better outcomes.
+
+* [Bias Correction of Learned Generative Models using Likelihood-Free Importance Weighting](https://arxiv.org/pdf/1906.09531.pdf) [nips 2019] trained a binary classifier to distinguish samples from data distribution and samples from the generative model. This classifier is used to estimate importance weights for constructing a new unnormalized distribution. The proposed strategy is called likelihood-free importance weighting (LFIW).
+
+
+## Smart Prompt Design
+* Gradient-based Search
+* Heuristic-based Search
+
+
+## Finetuning
+* Conditional Training
+* RL Fine-tuning
+* RL Fine-tuning with Human Preferences
+* Guided Fine-tuning with Steerable Layer
+* Distributional Approach
+* Unlikelihood Training
 
 
