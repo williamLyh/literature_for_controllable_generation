@@ -64,7 +64,11 @@ only on candidates that might satisfy all constraints.
 ## commonsense reason
 * COMMONGEN
 
-## recipe generation
 
-## data-grounded dialogue response generation 
+## recipe generation
+* [RecipeNLG](https://github.com/Glorf/recipenlg)([paper](https://aclanthology.org/2020.inlg-1.4.pdf)): Based on Recipe1M+ but focused more on text.
+* [Recipe1M+](http://pic2recipe.csail.mit.edu/): 13M Images + 1M Recipe. Proposed for a range of tasks such as joint embedding learning.
+
+## data-grounded generation
+* [WikiBio](): 
 
