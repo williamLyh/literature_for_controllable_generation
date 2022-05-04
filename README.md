@@ -37,7 +37,8 @@ We convert the **hard logic constraints** into a **soft penalty term in the deco
 exhaustive search to optimize the CNF constraints is intractable, NEUROLOGIC uses a beambased search to approximate
 pruning, grouping, and selecting
 Pruning step: We first discard any h with irreversible unsatisfied clauses (state S2) to focus
-only on candidates that might satisfy all constraints.
+only on candidates that might satisfy all constraints.  
+**Contributions**: First, NEUROLOGIC generalizes to arbitrary logical constraints by handling the full scope of CNF constraint. Second, NEUROLOGIC effectively optimizes objective function through efficient and diverse search over output space. Third, the asymptotic runtime of NEUROLOGIC is same with beam search.
 
 
 ## Trainable Decoding
