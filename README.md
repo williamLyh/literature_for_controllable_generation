@@ -29,6 +29,16 @@ Our preferences on topic or sentiment can be baked into the candidate ranking fu
 Beam search has gone through the test of time in the field of NLP. The question is: If we want to model beam search as exact search in a regularized decoding framework. The paper proposed a connection between beam search and the uniform information density (UID) hypothesis. “The uniform information density hypothesis (UID; Levy and Jaeger, 2007) states that—subject to the constraints of the grammar—humans prefer sentences that distribute information (in the sense of information theory) equally across the linguistic signal, e.g., a sentence.”   
 It hypothesizes that humans prefer text with evenly distributed surprisal. Popular decoding methods like top-k sampling or nuclear sampling actually filter out high-surprisal options, thus implicitly encouraging the UID property in output sequences. Beam search has gone through the test of time in the field of NLP. The question is: If we want to model beam search as exact search in a regularized decoding framework. The paper proposed a connection between beam search and the uniform information density (UID) hypothesis. 
 
+* [NEUROLOGIC DECODING: Unsupervised Neural Text Generation with Predicate Logic Constraints](https://arxiv.org/pdf/2010.12884.pdf) [naacl 2021]   
+Motivations: pretrained language models struggle at learning to follow these constraints, even when the finetuning dataset is large.For example, for the recipe generation task, a GPT2 model finetuned on hundreds of thousands of recipes still hallucinates extra ingredients. In stark contrast,
+humans need to see only a few examples to generate the desired output satisfying all the *logical constraints* (or rather say hard constraints).  
+We hypothesize that this mismatch is due to a fundamental under-specification of finetuning. If we finetune one language model on a dataset, the likelihood of it generating sequences from the same distribution should increase. Yet there is no guarantee that this improvement in likelihood will come from improvements on the fundamental task of constrained generation, as opposed to picking up on dataset-specific patterns such as language style. In fact, we present analysis suggesting that ‘worst-case’ learning behavior is common in practice: when we increase the finetuning data fed to GPT2 by an order of magnitude, constraint-satisfaction with standard beam search shows only modest improvement. (This is a strong motivation)  
+We convert the **hard logic constraints** into a **soft penalty term in the decoding objective**, and use a beam-based search to find approximately-optimal solutions. (constraint states are tracked to reuse computation.) The framework does not require any modification of the model structure or training pipeline.  
+exhaustive search to optimize the CNF constraints is intractable, NEUROLOGIC uses a beambased search to approximate
+pruning, grouping, and selecting
+Pruning step: We first discard any h with irreversible unsatisfied clauses (state S2) to focus
+only on candidates that might satisfy all constraints.
+
 
 ## Trainable Decoding
 * [Trainable Greedy Decoding for Neural Machine Translation](https://arxiv.org/pdf/1702.02429.pdf) [emnlp 2017] proposed a trainable greedy decoding algorithm to maximize an arbitrary objective for sampling sequences. The idea is based on the noisy, parallel approximate decoding (NPAD). NPAD injects unstructured noise into the model hidden states and runs noisy decoding multiple times in parallel to avoid potential degradation. To take a step further, trainable greedy decoding replaces the unstructured noise with a learnable random variable, predicted by a RL agent that takes the previous hidden state, the previous decoded token and the context as input. In other words, the decoding algorithm learns a RL actor to manipulate the model hidden states for better outcomes.
@@ -49,4 +59,11 @@ It hypothesizes that humans prefer text with evenly distributed surprisal. Popul
 * Distributional Approach
 * Unlikelihood Training
 
+# Datasets
+## commonsense reason
+* COMMONGEN
+
+## recipe generation
+
+## data-grounded dialogue response generation 
 
