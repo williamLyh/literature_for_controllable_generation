@@ -72,3 +72,27 @@ only on candidates that might satisfy all constraints.
 ## data-grounded generation
 * [WikiBio](): 
 
+# Knowledge enhanced NLG
+open book method > closed book method
+task: explaination generation 
+
+use structured data to enhance  
+* language generation with multi-hop reasoning on commonsense KG [emnlp 2020]: GRF, Encoder: R-GCN; Decoder: assign scores to neighbour nodes to show importance. 
+* Diversifying Content generation with mixture of KG experts; MoKGE [ACL 2022]: Use mixture of KG experts, each is good at different things (e.g. usage or taxonomy). Use different expert to generate different explanations.  
+
+use unstructured data to enhance  
+* Retrieval-augmented language model pre-training, ReaLM in ICML2020: Pretraining, finetuning:
+* Retrieval-augmented generation for knowledge intensive nlp tasks, RAG in NIPS 2020: RAG-sequence, RAG-token
+* Leveraging passage retrieval with... FiD in EACL 2021: 
+
+Trends in KG-enhanced NLP:
+* Large retrieval corpus: Noisy, not accurate, e.g. Google
+* heterogeneous knowledge: text, table, KB (structed, unstructured, semi-structured) -> verbolize to text (current method)
+* reduce hallucination
+* knowledge for other nlp tasks
+* knowledge for efficiency
+* knowledge for diversity/interpretability
+
+Open end Commonsense task: OpenCSR NAACL 2021, CommonGen emnlp 2021
+
+
